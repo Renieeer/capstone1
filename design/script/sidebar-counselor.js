@@ -352,3 +352,132 @@ const handleResize = debounce(() => {
 window.addEventListener('resize', handleResize);
 
 console.log('✅ Counselor Sidebar Script Loaded');
+//////////////////////////////////////////////////////////
+// Auto-calculate totals on page load
+
+document.addEventListener('DOMContentLoaded', function() {
+    calculateAllTotals();
+    
+    // Auto-refresh every 30 seconds to detect database changes
+    setInterval(refreshData, 30000);
+});
+
+// Refresh data from database
+function refreshData() {
+    location.reload();
+}
+
+// Calculate all totals based on displayed values
+function calculateAllTotals() {
+    // 1. Calculate category-grade totals (M + F for each category/grade combination)
+    document.querySelectorAll('.category-grade-total').forEach(cell => {
+        const categoryId = cell.dataset.category;
+        const gradeId = cell.dataset.grade;
+        const row = cell.closest('tr');
+        
+        const maleCell = row.querySelector(`.male-value[data-category="${categoryId}"][data-grade="${gradeId}"]`);
+        const femaleCell = row.querySelector(`.female-value[data-category="${categoryId}"][data-grade="${gradeId}"]`);
+        
+        const male = parseInt(maleCell.textContent) || 0;
+        const female = parseInt(femaleCell.textContent) || 0;
+        
+        cell.textContent = male + female;
+    });
+    
+    // 2. Calculate category grand totals (sum of all grades for each category)
+    document.querySelectorAll('.category-grand-total').forEach(cell => {
+        const categoryId = cell.dataset.category;
+        let total = 0;
+        
+        document.querySelectorAll(`.category-grade-total[data-category="${categoryId}"]`).forEach(gradeCell => {
+            total += parseInt(gradeCell.textContent) || 0;
+        });
+        
+        cell.textContent = total;
+    });
+    
+    // 3. Calculate section totals (sum of all categories in a section for each grade)
+    document.querySelectorAll('[data-section-id]').forEach(row => {
+        const sectionId = row.dataset.sectionId;
+        
+        // For each grade
+        document.querySelectorAll('.male-value').forEach(cell => {
+            const gradeId = cell.dataset.grade;
+            if (cell.dataset.section === sectionId) {
+                // Male total
+                let maleTotal = 0;
+                document.querySelectorAll(`.male-value[data-section="${sectionId}"][data-grade="${gradeId}"]`).forEach(c => {
+                    maleTotal += parseInt(c.textContent) || 0;
+                });
+                const maleTotalCell = row.querySelector(`.section-male-total[data-section="${sectionId}"][data-grade="${gradeId}"]`);
+                if (maleTotalCell) maleTotalCell.textContent = maleTotal;
+                
+                // Female total
+                let femaleTotal = 0;
+                document.querySelectorAll(`.female-value[data-section="${sectionId}"][data-grade="${gradeId}"]`).forEach(c => {
+                    femaleTotal += parseInt(c.textContent) || 0;
+                });
+                const femaleTotalCell = row.querySelector(`.section-female-total[data-section="${sectionId}"][data-grade="${gradeId}"]`);
+                if (femaleTotalCell) femaleTotalCell.textContent = femaleTotal;
+                
+                // Combined total
+                const totalCell = row.querySelector(`.section-total-total[data-section="${sectionId}"][data-grade="${gradeId}"]`);
+                if (totalCell) totalCell.textContent = maleTotal + femaleTotal;
+            }
+        });
+        
+        // Section grand total
+        let sectionGrandTotal = 0;
+        row.querySelectorAll('.section-total-total').forEach(cell => {
+            sectionGrandTotal += parseInt(cell.textContent) || 0;
+        });
+        const grandTotalCell = row.querySelector(`.section-grand-total[data-section="${sectionId}"]`);
+        if (grandTotalCell) grandTotalCell.textContent = sectionGrandTotal;
+    });
+    
+    // 4. Calculate overall totals (sum of all sections for each grade)
+    document.querySelectorAll('.overall-male-total').forEach(cell => {
+        const gradeId = cell.dataset.grade;
+        let total = 0;
+        
+        document.querySelectorAll(`.section-male-total[data-grade="${gradeId}"]`).forEach(sectionCell => {
+            total += parseInt(sectionCell.textContent) || 0;
+        });
+        
+        cell.textContent = total;
+    });
+    
+    document.querySelectorAll('.overall-female-total').forEach(cell => {
+        const gradeId = cell.dataset.grade;
+        let total = 0;
+        
+        document.querySelectorAll(`.section-female-total[data-grade="${gradeId}"]`).forEach(sectionCell => {
+            total += parseInt(sectionCell.textContent) || 0;
+        });
+        
+        cell.textContent = total;
+    });
+    
+    document.querySelectorAll('.overall-total-total').forEach(cell => {
+        const gradeId = cell.dataset.grade;
+        let total = 0;
+        
+        document.querySelectorAll(`.section-total-total[data-grade="${gradeId}"]`).forEach(sectionCell => {
+            total += parseInt(sectionCell.textContent) || 0;
+        });
+        
+        cell.textContent = total;
+    });
+    
+    // 5. Calculate overall grand total
+    let overallGrandTotal = 0;
+    document.querySelectorAll('.overall-total-total').forEach(cell => {
+        overallGrandTotal += parseInt(cell.textContent) || 0;
+    });
+    document.getElementById('overallGrandTotal').textContent = overallGrandTotal;
+}
+
+// Download report function
+function downloadReport() {
+    window.print();
+}

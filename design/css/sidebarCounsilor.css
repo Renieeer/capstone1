@@ -221,6 +221,7 @@ body {
 .nav-link:hover {
     background: var(--hover-bg);
     color: #ffffff;
+    padding-left: 20px;
 }
 
 .nav-link:hover i {
@@ -228,13 +229,13 @@ body {
 }
 
 /* Active State */
-.nav-link.active {
+/* .nav-link.active {
     background: rgba(255, 255, 255, 0.2);
     color: #ffffff;
     border-left-color: var(--accent-green);
     font-weight: 600;
     box-shadow: none;
-}
+} */
 
 .nav-link.active i {
     color: var(--accent-green);

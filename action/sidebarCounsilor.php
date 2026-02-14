@@ -34,7 +34,7 @@ $currentPage = basename($_SERVER['PHP_SELF']);
         <ul class="nav-list">
             <!-- Dashboard Link -->
             <li class="nav-item">
-                <a href="counsilor.php" class="nav-link <?php echo ($currentPage == 'counsilor.php') ? 'active' : ''; ?>">
+                <a href="counsilor.php" class="nav-link">
                     <i class="fa-solid fa-chart-line"></i>
                     <span class="nav-text">Dashboard</span>
                 </a>
@@ -51,22 +51,28 @@ $currentPage = basename($_SERVER['PHP_SELF']);
              <li class="nav-item nav-item-submenu">
                 <a href="#" class="nav-link" data-submenu="#appointmentMenu" aria-expanded="false">
                     <i class="fa-solid fa-calendar-check"></i>
-                    <span class="nav-text">Referral Form Status</span>
+                    <span class="nav-text">Reports</span>
                     <i class="fa-solid fa-chevron-right dropdown-icon"></i>
                 </a>
                 <ul class="submenu" id="appointmentMenu">
-                    <li><a href="counsilor.php"><i class="fa-solid fa-envelope"></i> Counseling Schedule</a></li>
-                    <li><a href="#"><i class="fa-solid fa-user-tie"></i> Appointment Report</a></li>
+                    <li><a href="counsilor.php"><i class="fa-solid fa-file-lines"></i>Case Reports</a></li>
+                     <li><a href="counsilor.php"><i class="fa-solid fa-file-lines"></i>Appointment report</a></li>
                 </ul>
             </li>
 
-
-           
-            <!-- Schedule Link -->
-            <li class="nav-item">
+            <!-- Student Accounts Link -->
+            <li class="nav-item">  
                 <a href="#" class="nav-link">
-                    <i class="fa-solid fa-clock"></i>
-                    <span class="nav-text">Schedule</span>
+                    <i class="fa-solid fa-users"></i>
+                    <span class="nav-text">Students Profile</span>
+                </a>
+            </li>
+
+            <!-- referal / Counseling  -->
+             <li class="nav-item">
+                <a href="#" class="nav-link">
+                    <i class="fa-solid fa-calendar-check"></i>
+                    <span class="nav-text">Referral & Counseling Flow </span>
                 </a>
             </li>
 
@@ -74,24 +80,23 @@ $currentPage = basename($_SERVER['PHP_SELF']);
             <li class="nav-item">
                 <a href="#" class="nav-link">
                     <i class="fa-solid fa-calendar-days"></i>
-                    <span class="nav-text">Report Case</span>
+                    <span class="nav-text">Follow-up Form</span>
                 </a>
             </li>
+            
+             <!-- navigation link -->
+             <li class="nav-item">
+                <a href="#" class="nav-link">
+                    <i class="fa-solid fa-calendar"></i>
+                    <span class="nav-text">Schedule</span>
+                </a>
+             </li>
 
             <!-- Messages Link -->
             <li class="nav-item">
                 <a href="#" class="nav-link">
                     <i class="fa-solid fa-envelope"></i>
-                    <span class="nav-text">Messages</span>
-                    <span class="nav-badge notification-badge">5</span>
-                </a>
-            </li>
-
-            <!-- Student Accounts Link -->
-            <li class="nav-item">
-                <a href="#" class="nav-link">
-                    <i class="fa-solid fa-users"></i>
-                    <span class="nav-text">Students</span>
+                    <span class="nav-text">Feedbacks</span>
                 </a>
             </li>
 

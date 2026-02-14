@@ -28,25 +28,19 @@
             <div class="card">
                 <i class="fa-solid bi-people-fill"></i>
                 178+
-                <span>Grade 7</span>
+                <span>Pending</span>
             </div>
 
             <div class="card">
                 <i class="fa-solid bi-people-fill"></i>
                 20+
-                <span>Grade 8</span>
+                <span>Enrolled Student</span>
             </div>
 
             <div class="card">
                 <i class="fa-solid bi-people-fill"></i>
                 190+
-                <span>Grade 9</span>
-            </div>
-
-            <div class="card">
-                <i class="fa-solid bi-people-fill"></i>
-                12+
-                <span>Grade 10</span>
+                <span>Active Student</span>
             </div>
         </div>
 

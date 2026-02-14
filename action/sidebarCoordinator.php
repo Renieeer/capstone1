@@ -1,17 +1,17 @@
 <?php
-// Coordinator Sidebar Component
-// This file contains the sidebar for coordinator dashboard with all navigation items
+// Counselor Sidebar Component
+// This file contains the sidebar for counselor dashboard with all navigation items
 
 // Get current page for active state
 $currentPage = basename($_SERVER['PHP_SELF']);
 ?>
 
-<aside class="sidebar" id="coordinatorSidebar">
+<aside class="sidebar" id="counselorSidebar">
     <!-- Logo Section -->
     <div class="sidebar-header">
         <div class="logo">
-            <i class="fa-solid fa-users-gear"></i>
-            <span>Coordinator</span>
+            <i class="fa-solid fa-heart-hands"></i>
+            <span>Maam Donna</span>
         </div>
         <button class="sidebar-toggle" id="sidebarToggle" aria-label="Toggle Sidebar">
             <i class="fa-solid fa-chevron-left"></i>
@@ -19,22 +19,21 @@ $currentPage = basename($_SERVER['PHP_SELF']);
     </div>
 
     <!-- User Profile Section -->
-    <div class="user-profile">
+    <li class="user-profile">
         <div class="profile-avatar">
-            <i class="fa-solid fa-user-secret"></i>
+            <i class="fa-solid fa-user-tie"></i>
         </div>
         <div class="profile-info">
-            <p class="profile-name">Welcome!</p>
-            <p class="profile-role">Coordinator</p>
+            <p class="profile-name">👋 Good Morning</p>
+            <p class="profile-role">Counselor</p>
         </div>
-    </div>
-
+    </li>
     <!-- Navigation Menu -->
     <nav class="sidebar-nav">
         <ul class="nav-list">
             <!-- Dashboard Link -->
             <li class="nav-item">
-                <a href="coordinator.php" class="nav-link <?php echo ($currentPage == 'coordinator.php') ? 'active' : ''; ?>">
+                <a href="coordinator.php" class="nav-link">
                     <i class="fa-solid fa-chart-line"></i>
                     <span class="nav-text">Dashboard</span>
                 </a>
@@ -48,56 +47,39 @@ $currentPage = basename($_SERVER['PHP_SELF']);
                 </a>
             </li>
 
-            <!-- Referral Form Link -->
-            <li class="nav-item">
-                <a href="#" class="nav-link">
-                    <i class="fa-solid fa-file-invoice"></i>
-                    <span class="nav-text">Referral Form</span>
-                </a>
-            </li>
-
-            <!-- Schedule Link -->
-            <li class="nav-item">
+             <li class="nav-item nav-item-submenu">
                 <a href="#" class="nav-link">
                     <i class="fa-solid fa-calendar-check"></i>
-                    <span class="nav-text">Schedule</span>
+                    <span class="nav-text">Pendin Forms</span>
                 </a>
             </li>
 
             <!-- Report Case Link -->
             <li class="nav-item">
-                <a href="#" class="nav-link">
-                    <i class="fa-solid fa-file-lines"></i>
+                <a href="report-case.php" class="nav-link">
+                    <i class="fa-solid fa-calendar-days"></i>
                     <span class="nav-text">Report Case</span>
                 </a>
             </li>
+            
+             <!-- navigation link -->
+             <li class="nav-item">
+                <a href="#" class="nav-link">
+                    <i class="fa-solid fa-calendar"></i>
+                    <span class="nav-text">Schedule</span>
+                </a>
+             </li>
 
             <!-- Messages Link -->
             <li class="nav-item">
                 <a href="#" class="nav-link">
                     <i class="fa-solid fa-envelope"></i>
-                    <span class="nav-text">Messages</span>
-                    <span class="nav-badge notification-badge">3</span>
+                    <span class="nav-text">Feedbacks</span>
                 </a>
             </li>
 
-            <!-- Notifications Link -->
-            <li class="nav-item">
-                <a href="#" class="nav-link">
-                    <i class="fa-solid fa-bell"></i>
-                    <span class="nav-text">Notifications</span>
-                    <span class="nav-badge pending-badge">2</span>
-                </a>
-            </li>
-
-            <!-- Students List Link -->
-            <li class="nav-item">
-                <a href="#" class="nav-link">
-                    <i class="fa-solid fa-people-group"></i>
-                    <span class="nav-text">Students</span>
-                </a>
-            </li>
-
+            <!-- Student Accounts Link -->
+             
             <!-- Divider -->
             <li class="nav-divider"></li>
 
@@ -129,7 +111,7 @@ $currentPage = basename($_SERVER['PHP_SELF']);
 
     <!-- Sidebar Footer -->
     <div class="sidebar-footer">
-        <p class="footer-text">Coordinator Portal 2025-2026</p>
+        <p class="footer-text">Counselor Portal 2025-2026</p>
     </div>
 </aside>
 

@@ -1,23 +1,13 @@
 /* ============================================
-   COORDINATOR - SIDEBAR & DASHBOARD STYLES
+   COUNSELOR - SIDEBAR & DASHBOARD STYLES
    ============================================ */
-
-:root {
-    --primary-color: #0ea5e9;
-    --primary-light: #7dd3fc;
-    --primary-dark: #0284c7;
-    --accent-green: #8be355;
-    --accent-green-dark: #5ad63b;
-    --bg-dark: #0a5d5f;
-    --text-light: #f5f7fa;
-    --text-muted: #b3c3f0;
-    --border-color: rgba(125, 211, 252, 0.2);
-    --hover-bg: rgba(255, 255, 255, 0.15);
-    --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.1);
-    --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.15);
-    --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-    
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', 'Roboto', sans-serif;
 }
+
 html, body {
     height: 100%;
     width: 100%;
@@ -26,7 +16,7 @@ html, body {
 }
 
 body {
-    background: #f5f7fa;
+    background: #f5f7fa;    
     color: #333;
     line-height: 1.6;
     overflow: hidden;
@@ -41,12 +31,29 @@ body {
     padding: 0;
     gap: 0;
 }
+
+:root {
+    --primary-color: #6882c8;
+    --primary-light: #acccff;
+    --primary-dark: #5470b0;
+    --accent-green: #8be355;
+    --accent-green-dark: #5ad63b;
+    --bg-dark: #0a5d5f;
+    --text-light: #f5f7fa;
+    --text-muted: #b3c3f0;
+    --border-color: rgba(172, 204, 255, 0.2);
+    --hover-bg: rgba(255, 255, 255, 0.15);
+    --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.1);
+    --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.15);
+    --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
 /* ============================================
-   SIDEBAR STRUCTURE - COORDINATOR THEME
+   SIDEBAR STRUCTURE - COUNSELOR THEME
    ============================================ */
 
 .sidebar {
-    background: linear-gradient(135deg, var(--primary-color) 0%, #0284c7 100%);
+    background: linear-gradient(135deg, var(--primary-color) 0%, #5470b0 100%);
     color: var(--primary-light);
     width: 260px;
     height: 100vh;
@@ -159,7 +166,73 @@ body {
     margin: 4px 0 0 0;
     color: var(--text-muted);
 }
+/* ============================================
+   TABLE MENU
+   ============================================ */
 
+table {
+    border-collapse: collapse;
+    width: 100%;
+    font-size: 12px;
+}
+th, td {
+    border: 1px solid #000;
+    padding: 4px;
+    text-align: center;
+}
+th { background: #e6e6e6; }
+.category {
+    background: #f2f2f2;
+    font-weight: bold;
+    text-align: left;
+}
+.left { text-align: left; }
+.total-row {
+    background: #c6efce;
+    font-weight: bold;
+}
+.grand-total {
+    background: #a9d08e;
+    font-weight: bold;
+}
+/* Read-only data cells */
+.data-cell {
+    background: #fff;
+    color: #333;
+    user-select: none;
+    min-width: 40px;
+}
+/* Auto-calculated total cells */
+.auto-total {
+    background: #f0f0f0;
+    font-weight: bold;
+    color: #333;
+    user-select: none;
+}
+.refresh-btn {
+    background: #28a745;
+    color: white;
+    border: none;
+    padding: 8px 15px;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-right: 10px;
+}
+.refresh-btn:hover {
+    background: #218838;
+}
+.refresh-btn i {
+    margin-right: 5px;
+}
+.last-updated {
+    display: inline-block;
+    margin-left: 10px;
+    padding: 5px 10px;
+    background: #e9ecef;
+    border-radius: 3px;
+    font-size: 12px;
+    color: #495057;
+}
 /* ============================================
    NAVIGATION MENU
    ============================================ */
@@ -193,10 +266,9 @@ body {
     cursor: pointer;
     transition: var(--transition);
     position: relative;
-    border-left: 3px solid transparent;
-    margin: 4px 0px;
-    border-radius: 0 8px 8px 0;
-
+    border-left: 4px solid transparent;
+    margin: 0;
+    border-radius: 0;
 }
 
 .nav-link i {
@@ -223,13 +295,13 @@ body {
 }
 
 /* Active State */
-.nav-link.active {
+/* .nav-link.active {
     background: rgba(255, 255, 255, 0.2);
     color: #ffffff;
     border-left-color: var(--accent-green);
     font-weight: 600;
-    box-shadow: inset 0 0 8px rgba(0, 0, 0, 0.1);
-}
+    box-shadow: none;
+} */
 
 .nav-link.active i {
     color: var(--accent-green);
@@ -278,7 +350,7 @@ body {
 .nav-divider {
     height: 1px;
     background: var(--border-color);
-    margin: 12px 16px;
+    margin: 0;
     list-style: none;
 }
 
@@ -512,8 +584,8 @@ body {
 .dashboard-container {
     width: 100%;
     max-width: 1400px;
-    margin: 0;
-    padding: 24px;
+    margin: 24px auto;
+    padding: 0 24px;
 }
 
 /* ============================================
@@ -954,19 +1026,64 @@ tbody tr:hover td {
 }
 
 /* ============================================
-   UTILITIES
+   SUBMENU (Dropdown)
    ============================================ */
 
-.text-muted {
-    color: #718096;
+.nav-item-submenu .nav-link {
+    padding-right: 12px;
 }
 
-.text-success {
-    color: #48bb78;
+.dropdown-icon {
+    font-size: 12px;
+    transition: var(--transition);
+    margin-left: auto;
 }
 
-.text-error {
-    color: #f56565;
+.nav-item-submenu .nav-link[aria-expanded="true"] .dropdown-icon {
+    transform: rotateZ(90deg);
+    color: var(--accent-green);
+}
+
+.submenu {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    background: rgba(0, 0, 0, 0.15);
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease-out;
+}
+
+.submenu.open {
+    max-height: 300px;
+}
+
+.submenu li {
+    margin: 0;
+}
+
+.submenu a {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 10px 16px 10px 40px;
+    color: var(--primary-light);
+    text-decoration: none;
+    font-size: 13px;
+    font-weight: 500;
+    transition: var(--transition);
+    border-left: 4px solid transparent;
+    margin: 0;
+}
+
+.submenu a i {
+    font-size: 14px;
+}
+
+.submenu a:hover {
+    color: #ffffff;
+    background: rgba(255, 255, 255, 0.1);
+    border-left-color: var(--accent-green);
 }
 
 /* ============================================
@@ -975,7 +1092,7 @@ tbody tr:hover td {
 
 @media (prefers-color-scheme: dark) {
     body.dark-mode .sidebar {
-        background: linear-gradient(135deg, #0284c7 0%, #0369a1 100%);
+        background: linear-gradient(135deg, #5470b0 0%, #4a5d9c 100%);
     }
 
     body.dark-mode .modal-content {
