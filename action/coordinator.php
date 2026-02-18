@@ -66,7 +66,7 @@
         <!-- BOTTOM SECTION -->
         <div class="bottom">
             <div class="table-box">
-                <h3><i class="fa-solid fa-table"></i> Student List </h3>
+                <h3><i class="fa-solid fa-table"></i> Pending Form </h3>
                 <table>
                     <thead>
                         <tr>

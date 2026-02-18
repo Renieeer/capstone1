@@ -575,9 +575,227 @@ window.Sidebar = {
     toggle: toggleSidebar,
     openSettings: openSettingsModal,
     closeSettings: closeSettingsModal,
-    toggleSubmenu: toggleSubmenu,
+
+    // toggleSubmenu: toggleSubmenu,
     saveState: saveState,
     getState: getState
 };
 
 console.log('✅ Sidebar JavaScript loaded successfully');
+
+/////////////////////////////////////////////////////////////
+// Global counters for dynamic sections
+let educationCount = 1;
+let organizationCount = 1;
+let siblingCount = 1;
+let friendCount = 1;
+
+// Add Education Function
+function addEducation() {
+    const container = document.getElementById('educationContainer');
+    if (!container) {
+        console.error('educationContainer not found');
+        return;
+    }
+    
+    const div = document.createElement('div');
+    div.className = 'dynamic-section';
+    div.innerHTML = `
+        <button type="button" class="remove-btn" onclick="this.parentElement.remove()">
+            <i class="fa-solid fa-times"></i> Remove
+        </button>
+        <table class="form-table">
+            <tr>
+                <th>Grade Level</th>
+                <td><input type="text" name="education[${educationCount}][GradeLevel]" placeholder="e.g., Grade 7"></td>
+                <th>School Attended</th>
+                <td><input type="text" name="education[${educationCount}][SchoolAttended]"></td>
+            </tr>
+            <tr>
+                <th>Inclusive Years</th>
+                <td><input type="text" name="education[${educationCount}][InclusiveYes]" placeholder="e.g., 2020-2024"></td>
+                <th>Plan After High School</th>
+                <td><textarea rows="2" name="education[${educationCount}][PlaceAndSchool]"></textarea></td>
+            </tr>
+        </table>
+    `;
+    container.appendChild(div);
+    educationCount++;
+    console.log('Education section added successfully');
+}
+
+// Add Organization Function
+function addOrganization() {
+    const container = document.getElementById('organizationContainer');
+    if (!container) {
+        console.error('organizationContainer not found');
+        return;
+    }
+    
+    const div = document.createElement('div');
+    div.className = 'dynamic-section';
+    div.innerHTML = `
+        <button type="button" class="remove-btn" onclick="this.parentElement.remove()">
+            <i class="fa-solid fa-times"></i> Remove
+        </button>
+        <table class="form-table">
+            <tr>
+                <th>Organization Name</th>
+                <td><input type="text" name="organization[${organizationCount}][OrganizationName]"></td>
+                <th>Position Title</th>
+                <td><input type="text" name="organization[${organizationCount}][PositionTitle]"></td>
+            </tr>
+            <tr>
+                <th>In Campus?</th>
+                <td colspan="3">
+                    <select name="organization[${organizationCount}][inCampus]">
+                        <option value="">Select</option>
+                        <option value="Yes">Yes</option>
+                        <option value="No">No</option>
+                    </select>
+                </td>
+            </tr>
+        </table>
+    `;
+    container.appendChild(div);
+    organizationCount++;
+    console.log('Organization section added successfully');
+}
+
+// Add Sibling Function
+function addSibling() {
+    const container = document.getElementById('siblingsContainer');
+    if (!container) {
+        console.error('siblingsContainer not found');
+        return;
+    }
+    
+    const div = document.createElement('div');
+    div.className = 'dynamic-section';
+    div.innerHTML = `
+        <button type="button" class="remove-btn" onclick="this.parentElement.remove()">
+            <i class="fa-solid fa-times"></i> Remove
+        </button>
+        <table class="form-table">
+            <tr>
+                <th>First Name</th>
+                <td><input type="text" name="sibling[${siblingCount}][FirstName]"></td>
+                <th>Middle Name</th>
+                <td><input type="text" name="sibling[${siblingCount}][MiddleName]"></td>
+            </tr>
+            <tr>
+                <th>Last Name</th>
+                <td><input type="text" name="sibling[${siblingCount}][LastName]"></td>
+                <th>Nickname</th>
+                <td><input type="text" name="sibling[${siblingCount}][NickName]"></td>
+            </tr>
+            <tr>
+                <th>Age</th>
+                <td><input type="number" name="sibling[${siblingCount}][Age]"></td>
+                <th>Birth Order</th>
+                <td><input type="text" name="sibling[${siblingCount}][BirthOrder]" placeholder="e.g., 1st, 2nd"></td>
+            </tr>
+            <tr>
+                <th>School ID</th>
+                <td colspan="3"><input type="text" name="sibling[${siblingCount}][SchoolId]"></td>
+            </tr>
+        </table>
+    `;
+    container.appendChild(div);
+    siblingCount++;
+    console.log('Sibling section added successfully');
+}
+
+// Add Friend Function
+function addFriend() {
+    const container = document.getElementById('friendsContainer');
+    if (!container) {
+        console.error('friendsContainer not found');
+        return;
+    }
+    
+    const div = document.createElement('div');
+    div.className = 'dynamic-section';
+    div.innerHTML = `
+        <button type="button" class="remove-btn" onclick="this.parentElement.remove()">
+            <i class="fa-solid fa-times"></i> Remove
+        </button>
+        <table class="form-table">
+            <tr>
+                <th>In School?</th>
+                <td>
+                    <select name="friend[${friendCount}][In_school]">
+                        <option value="">Select</option>
+                        <option value="Yes">Yes</option>
+                        <option value="No">No</option>
+                    </select>
+                </td>
+                <th>First Name</th>
+                <td><input type="text" name="friend[${friendCount}][FirstName]"></td>
+            </tr>
+            <tr>
+                <th>Middle Name</th>
+                <td><input type="text" name="friend[${friendCount}][MiddleName]"></td>
+                <th>Last Name</th>
+                <td><input type="text" name="friend[${friendCount}][LastName]"></td>
+            </tr>
+        </table>
+    `;
+    container.appendChild(div);
+    friendCount++;
+    console.log('Friend section added successfully');
+}
+
+// Form validation before submit (optional)
+function validateStudentForm() {
+    const requiredFields = ['StudentId', 'LRN', 'FirstName', 'LastName', 'Sex', 'Age', 'DateOfBirth'];
+    let isValid = true;
+    let missingFields = [];
+
+    requiredFields.forEach(field => {
+        const input = document.querySelector(`[name="${field}"]`);
+        if (!input || !input.value.trim()) {
+            isValid = false;
+            missingFields.push(field);
+            if (input) {
+                input.style.borderColor = 'red';
+            }
+        } else if (input) {
+            input.style.borderColor = '';
+        }
+    });
+
+    if (!isValid) {
+        alert('Please fill in all required fields:\n' + missingFields.join('\n'));
+        return false;
+    }
+    
+    return true;
+}
+
+// Initialize form when DOM is ready
+document.addEventListener('DOMContentLoaded', function() {
+    console.log('✅ Student form functions loaded successfully');
+    console.log('✅ Functions available: addEducation, addOrganization, addSibling, addFriend');
+    
+    // Attach form validation to submit event
+    const studentForm = document.getElementById('studentForm');
+    if (studentForm) {
+        studentForm.addEventListener('submit', function(e) {
+            if (!validateStudentForm()) {
+                e.preventDefault();
+                return false;
+            }
+        });
+        console.log('✅ Form validation attached');
+    }
+});
+
+// Export functions to global scope (in case they're called inline)
+window.addEducation = addEducation;
+window.addOrganization = addOrganization;
+window.addSibling = addSibling;
+window.addFriend = addFriend;
+window.validateStudentForm = validateStudentForm;
+
+console.log('✅ Student form JavaScript module loaded');

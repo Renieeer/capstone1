@@ -1,7 +1,7 @@
 <?php
 
 // Database connection settings - update $dbname to your database name
-$hostname = '127.0.0.1';
+$hostname = 'localhost';
 $username = 'root';
 $password = '';
 $dbname   = 'guidance_tbl'; // <-- set your DB name

@@ -78,7 +78,7 @@ $currentPage = basename($_SERVER['PHP_SELF']);
 
             <!-- Report Case Link -->
             <li class="nav-item">
-                <a href="#" class="nav-link">
+                <a href="follow-upForm.php" class="nav-link">
                     <i class="fa-solid fa-calendar-days"></i>
                     <span class="nav-text">Follow-up Form</span>
                 </a>

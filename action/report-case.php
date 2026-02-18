@@ -132,7 +132,7 @@ include 'crud/analytic.php';
 </div>
 
 <script src="../design/script/sidebar-counselor.js"></script>
-<!-- <script src="../design/script/counsilor.js"></script> -->
+<script src="../design/script/counsilor.js"></script>
    <!-- <script src="https://cdn.jsdelivr.net/npm/chart.js"></script> -->
 
 </body>

@@ -118,7 +118,6 @@ body {
 /* ============================================
    USER PROFILE SECTION
    ============================================ */
-
 .user-profile {
     display: flex;
     align-items: center;
@@ -130,9 +129,12 @@ body {
     border: 1px solid var(--border-color);
     border-left: none;
     border-right: none;
+    text-decoration: none; /* ensures the link has no underline */
+    color: inherit;        /* inherits text color */
     transition: var(--transition);
 }
 
+/* hover effect */
 .user-profile:hover {
     background: rgba(255, 255, 255, 0.12);
     transform: translateX(0);

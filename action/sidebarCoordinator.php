@@ -19,7 +19,8 @@ $currentPage = basename($_SERVER['PHP_SELF']);
     </div>
 
     <!-- User Profile Section -->
-    <li class="user-profile">
+   <li>
+    <a href="profile.php" class="user-profile">
         <div class="profile-avatar">
             <i class="fa-solid fa-user-tie"></i>
         </div>
@@ -27,7 +28,8 @@ $currentPage = basename($_SERVER['PHP_SELF']);
             <p class="profile-name">👋 Good Morning</p>
             <p class="profile-role">Counselor</p>
         </div>
-    </li>
+    </a>    
+</li>
     <!-- Navigation Menu -->
     <nav class="sidebar-nav">
         <ul class="nav-list">
@@ -38,6 +40,18 @@ $currentPage = basename($_SERVER['PHP_SELF']);
                     <span class="nav-text">Dashboard</span>
                 </a>
             </li>
+            <!-- Studnet Porfile -->
+              <li class="nav-item nav-item-submenu">
+                <a href="#" class="nav-link" data-submenu="#appointmentMenu" aria-expanded="false">
+                    <i class="fa-solid fa-user-tie"></i>
+                    <span class="nav-text">Profile</span>
+                    <i class="fa-solid fa-chevron-right dropdown-icon"></i>
+                </a>
+                <ul class="submenu" id="appointmentMenu">
+                    <li><a href=""><i class="fa-solid fa-user-tie"></i>Student</a></li>
+                     <li><a href=""><i class="fa-solid fa-user-tie"></i>Counselor</a></li>
+                </ul>
+            </li>
 
             <!-- Analytics Link -->
             <li class="nav-item">
@@ -46,7 +60,7 @@ $currentPage = basename($_SERVER['PHP_SELF']);
                     <span class="nav-text">Analytics</span>
                 </a>
             </li>
-
+            <!--Pending Form  -->
              <li class="nav-item nav-item-submenu">
                 <a href="#" class="nav-link">
                     <i class="fa-solid fa-calendar-check"></i>
@@ -77,8 +91,6 @@ $currentPage = basename($_SERVER['PHP_SELF']);
                     <span class="nav-text">Feedbacks</span>
                 </a>
             </li>
-
-            <!-- Student Accounts Link -->
              
             <!-- Divider -->
             <li class="nav-divider"></li>
