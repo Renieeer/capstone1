@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Generation Time: Feb 14, 2026 at 12:02 PM
+-- Generation Time: Feb 21, 2026 at 01:52 PM
 -- Server version: 8.0.30
 -- PHP Version: 8.1.10
 
@@ -81,6 +81,14 @@ CREATE TABLE `educational_background` (
   `PlaceAndSchool` varchar(45) COLLATE utf8mb4_unicode_ci DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
+--
+-- Dumping data for table `educational_background`
+--
+
+INSERT INTO `educational_background` (`EducationalBgId`, `StudentId`, `GradeLevel`, `SchoolAttended`, `InclusiveYes`, `PlaceAndSchool`) VALUES
+(1, 'STU001', 'Grade 8', 'Butucan National High School', 'No', 'Butucan NHS'),
+(2, 'STU002', 'Grade 9', 'Valencia National High School', 'Yes', 'Valencia NHS');
+
 -- --------------------------------------------------------
 
 --
@@ -101,6 +109,18 @@ CREATE TABLE `family_status` (
   `MotherWithPartner` varchar(45) COLLATE utf8mb4_unicode_ci DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
+--
+-- Dumping data for table `family_status`
+--
+
+INSERT INTO `family_status` (`FamilyStatusID`, `StudentId`, `LivingTogether`, `MarriedYet`, `MarriedChurch`, `TemporarilySepered`, `PermanentlySepered`, `FatherDie`, `MotherDie`, `FatherWithPartner`, `MotherWithPartner`) VALUES
+(1, '23414', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(2, '2341', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(3, '2341', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(4, '2341', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(5, 'STU001', 'Yes', 'Yes', 'Yes', 'No', 'No', 'No', 'No', 'No', 'No'),
+(6, 'STU002', 'No', 'Yes', 'No', 'Yes', 'No', 'No', 'No', 'Yes', 'No');
+
 -- --------------------------------------------------------
 
 --
@@ -115,6 +135,14 @@ CREATE TABLE `friends_table` (
   `MiddleName` varchar(45) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `LastName` varchar(45) COLLATE utf8mb4_unicode_ci DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `friends_table`
+--
+
+INSERT INTO `friends_table` (`FriendID`, `StudentId`, `In_school`, `FirstName`, `MiddleName`, `LastName`) VALUES
+(1, 'STU001', 'Yes', 'Mark', 'Lee', 'Reyes'),
+(2, 'STU002', 'Yes', 'Angela', 'Marie', 'Santos');
 
 -- --------------------------------------------------------
 
@@ -155,6 +183,14 @@ CREATE TABLE `guardian` (
   `Relationship` varchar(45) COLLATE utf8mb4_unicode_ci DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
+--
+-- Dumping data for table `guardian`
+--
+
+INSERT INTO `guardian` (`GuardianID`, `StudentId`, `FirstName`, `MiddleName`, `LastName`, `Address`, `Landline`, `MobileNumber`, `Relationship`) VALUES
+(1, 'STU001', 'Maria', 'Lopez', 'Dela Cruz', 'Butucan Proper', 'N/A', '09987654321', 'Mother'),
+(2, 'STU002', 'Carlos', 'Mendoza', 'Garcia', 'Valencia City', 'N/A', '09335556666', 'Father');
+
 -- --------------------------------------------------------
 
 --
@@ -168,6 +204,14 @@ CREATE TABLE `oraganization` (
   `inCampus` varchar(45) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `StudentId` varchar(45) COLLATE utf8mb4_unicode_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `oraganization`
+--
+
+INSERT INTO `oraganization` (`OrganizationId`, `OrganizationName`, `PositionTitle`, `inCampus`, `StudentId`) VALUES
+('ORG001', 'Supreme Student Government', 'Member', 'Yes', 'STU001'),
+('ORG002', 'Science Club', 'Secretary', 'Yes', 'STU002');
 
 -- --------------------------------------------------------
 
@@ -190,6 +234,14 @@ CREATE TABLE `parent_table` (
   `Occupation` varchar(45) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `isDeceased` varchar(45) COLLATE utf8mb4_unicode_ci DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `parent_table`
+--
+
+INSERT INTO `parent_table` (`ParentId`, `StudentId`, `FirstName`, `LastName`, `MiddleName`, `NickName`, `BirthDate`, `PlaceOfBirth`, `Address`, `ContactNumber`, `HighestEducationalAttainment`, `Occupation`, `isDeceased`) VALUES
+('PAR001', 'STU001', 'Jose', 'Dela Cruz', 'Ramos', 'Joe', '1980-03-15', 'Bukidnon', 'Butucan Proper', '09111111111', 'College Graduate', 'Farmer', 'No'),
+('PAR002', 'STU002', 'Elena', 'Garcia', 'Mendoza', 'Len', '1982-11-25', 'Cagayan de Oro', 'Valencia City', '09444444444', 'High School Graduate', 'Vendor', 'No');
 
 -- --------------------------------------------------------
 
@@ -284,6 +336,14 @@ CREATE TABLE `sibling` (
   `StudentId` varchar(45) COLLATE utf8mb4_unicode_ci DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
+--
+-- Dumping data for table `sibling`
+--
+
+INSERT INTO `sibling` (`SiblingId`, `FirstName`, `LastName`, `MiddleName`, `NickName`, `Age`, `SchoolId`, `BirthOrder`, `StudentId`) VALUES
+(1, 'Anna', 'Dela Cruz', 'Santos', 'Ann', '10', 'Elementary School', '2nd', 'STU001'),
+(2, 'Joshua', 'Garcia', 'Mendoza', 'Josh', '12', 'Junior High', '1st', 'STU002');
+
 -- --------------------------------------------------------
 
 --
@@ -307,6 +367,14 @@ CREATE TABLE `student_table` (
   `PermanentAddress` varchar(45) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `CellphoneNumber` varchar(45) COLLATE utf8mb4_unicode_ci DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `student_table`
+--
+
+INSERT INTO `student_table` (`StudentId`, `LRN`, `FirstName`, `LastName`, `MiddleName`, `NickName`, `Sex`, `Age`, `DateOfBirth`, `PlaceOfBirth`, `ReligionFromBirth`, `CurrentReligion`, `CurrentAddress`, `PermanentAddress`, `CellphoneNumber`) VALUES
+('STU001', '202600000001', 'John', 'Dela Cruz', 'Santos', 'Johnny', 'Male', '14', '2011-05-12', 'Butucan', 'Catholic', 'Catholic', 'Butucan Proper', 'Butucan Proper', '09123456789'),
+('STU002', '202600000002', 'Maria', 'Lopez', 'Garcia', 'Mia', 'Female', '15', '2010-08-20', 'Valencia City', 'Catholic', 'Catholic', 'Valencia City', 'Valencia City', '09223334444');
 
 --
 -- Indexes for dumped tables
@@ -410,19 +478,19 @@ ALTER TABLE `categories`
 -- AUTO_INCREMENT for table `educational_background`
 --
 ALTER TABLE `educational_background`
-  MODIFY `EducationalBgId` int NOT NULL AUTO_INCREMENT;
+  MODIFY `EducationalBgId` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `family_status`
 --
 ALTER TABLE `family_status`
-  MODIFY `FamilyStatusID` int NOT NULL AUTO_INCREMENT;
+  MODIFY `FamilyStatusID` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT for table `friends_table`
 --
 ALTER TABLE `friends_table`
-  MODIFY `FriendID` int NOT NULL AUTO_INCREMENT;
+  MODIFY `FriendID` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `grades`
@@ -434,7 +502,7 @@ ALTER TABLE `grades`
 -- AUTO_INCREMENT for table `guardian`
 --
 ALTER TABLE `guardian`
-  MODIFY `GuardianID` int NOT NULL AUTO_INCREMENT;
+  MODIFY `GuardianID` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `reports`
@@ -452,7 +520,7 @@ ALTER TABLE `sections`
 -- AUTO_INCREMENT for table `sibling`
 --
 ALTER TABLE `sibling`
-  MODIFY `SiblingId` int NOT NULL AUTO_INCREMENT;
+  MODIFY `SiblingId` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- Constraints for dumped tables

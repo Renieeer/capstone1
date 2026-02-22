@@ -481,3 +481,106 @@ function calculateAllTotals() {
 function downloadReport() {
     window.print();
 }
+
+// ============================================
+// FOLLOW-UP FORM FUNCTIONS
+// ============================================
+
+// Store categories data from PHP
+const categoriesData = typeof window.categoriesData !== 'undefined' ? window.categoriesData : [];
+const sectionNames = {
+    1: 'CAR (Children at Risk)',
+    2: 'Mental Health',
+    3: 'Bullying',
+    4: 'Academic',
+    5: 'Family Issues',
+    6: 'Abuse and Neglect'
+};
+
+// Update categories dropdown based on selected section
+function updateCategories() {
+    const sectionId = document.getElementById('sectionId')?.value;
+    const categorySelect = document.getElementById('categoryId');
+    const titleInput = document.getElementById('title');
+    
+    if (!categorySelect || !titleInput) return;
+    
+    // Clear existing options
+    categorySelect.innerHTML = '<option value="">-- Select Category --</option>';
+    titleInput.value = '';
+    
+    if (!sectionId) return;
+    
+    // Filter categories by section
+    const filteredCategories = categoriesData.filter(cat => cat.section_id == sectionId);
+    
+    // Populate category dropdown
+    filteredCategories.forEach(category => {
+        const option = document.createElement('option');
+        option.value = category.id;
+        option.textContent = category.category_name;
+        categorySelect.appendChild(option);
+    });
+}
+
+// Auto-generate title based on selected category
+function updateTitle() {
+    const categoryId = document.getElementById('categoryId')?.value;
+    const sectionId = document.getElementById('sectionId')?.value;
+    const titleInput = document.getElementById('title');
+    
+    if (!titleInput) return;
+    
+    if (!categoryId || !sectionId) {
+        titleInput.value = '';
+        return;
+    }
+    
+    // Find selected category
+    const category = categoriesData.find(cat => cat.id == categoryId);
+    const section = sectionNames[sectionId];
+    
+    if (category) {
+        titleInput.value = `${section} - ${category.category_name}`;
+    }
+}
+
+// Initialize follow-up form
+document.addEventListener('DOMContentLoaded', function() {
+    // Form submission
+    const followUpForm = document.getElementById('followUpForm');
+    if (followUpForm) {
+        followUpForm.addEventListener('submit', function(e) {
+            // Validate required fields
+            const studentId = document.getElementById('studentId')?.value;
+            const sectionId = document.getElementById('sectionId')?.value;
+            const categoryId = document.getElementById('categoryId')?.value;
+            const title = document.getElementById('title')?.value;
+            const counselor = document.getElementById('counselor')?.value;
+            const status = document.getElementById('status')?.value;
+            
+            if (!studentId || !sectionId || !categoryId || !title || !counselor || !status) {
+                e.preventDefault();
+                alert('Please fill in all required fields');
+                return false;
+            }
+        });
+    }
+
+    // Add smooth focus effects
+    const inputs = document.querySelectorAll('input, select, textarea');
+    inputs.forEach(input => {
+        input.addEventListener('focus', function() {
+            if (this.parentElement && this.parentElement.classList.contains('form-group')) {
+                this.parentElement.style.transform = 'translateX(4px)';
+                this.parentElement.style.transition = 'transform 0.3s ease';
+            }
+        });
+        
+        input.addEventListener('blur', function() {
+            if (this.parentElement && this.parentElement.classList.contains('form-group')) {
+                this.parentElement.style.transform = 'translateX(0)';
+            }
+        });
+    });
+});

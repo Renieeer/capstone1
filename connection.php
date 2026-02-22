@@ -16,11 +16,12 @@ $options = [
 
 try {
     $connection = new PDO($dsn, $username, $password, $options);
+  
 } catch (PDOException $e) {
     // Return JSON on connection failure (useful for AJAX callers) and stop execution
     echo json_encode(["success" => false, "message" => "Connection failed: " . $e->getMessage()]);
     exit;
 }
 
-// $connection will be used by other scripts that include this file
+// $connection and $conn will be used by other scripts that include this file
 ?>

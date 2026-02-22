@@ -61,10 +61,10 @@ $currentPage = basename($_SERVER['PHP_SELF']);
             </li>
 
             <!-- Student Accounts Link -->
-            <li class="nav-item">  
-                <a href="#" class="nav-link">
-                    <i class="fa-solid fa-users"></i>
-                    <span class="nav-text">Students Profile</span>
+             <li class="nav-item">
+                <a href="counselor_student_records.php" class="nav-link">
+                    <i class="fa-solid fa-folder-open"></i>
+                    <span class="nav-text">Student Records</span>
                 </a>
             </li>
 
